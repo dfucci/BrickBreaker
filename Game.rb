@@ -13,10 +13,12 @@ class Game < Hasu::Window
     @paddle = Paddle.new
     @ball.direction = "down"
   end
+
   def draw
     @ball.draw(self)
     @paddle.draw(self)
   end
+
   def update
     @ball.move!()
     if button_down?(Gosu::KbA)
@@ -27,12 +29,14 @@ class Game < Hasu::Window
     end
     if @ball.intersect?(@paddle)
       @ball.direction="up"
-      puts("intersection")
     end
     if @ball.out_of_edge?
       puts "up up up"
       @ball.direction="down"
     end
+
   end
+
 end
+
 Game.run
